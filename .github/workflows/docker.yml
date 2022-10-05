@@ -3,13 +3,13 @@ name: Create and publish a Docker image
 on:
   workflow_call:
     inputs:
-      repo_name:
+      repo_ref: # "author/repository_name" or ${{ github.repository }}
         required: true
         type: string
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ inputs.repo_name }}
+  IMAGE_NAME: ${{ inputs.repo_ref }}
 
 jobs:
   build-and-push-image:
